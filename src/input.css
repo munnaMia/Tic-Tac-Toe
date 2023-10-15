@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .rootStyle{
+        @apply mx-auto my-0 w-full h-[100vh] bg-black flex flex-col justify-center items-center;
+    }
+
+    .gameContainerStyle{
+        @apply bg-white rounded-xl lg:w-[45%] lg:h-[50%] md:w-[65%] md:h-[50%] sm:w-[80%] sm:h-[60%] w-[90%] h-[50%] grid grid-rows-3 grid-flow-col content-center p-1 gap-2    ;
+    }
+
+    .gameTitle{
+        @apply lg:text-7xl md:text-6xl sm:text-6xl text-5xl text-white mb-11 font-bold;
+    }
+
+    .cellStyle{
+        @apply hover:shadow-inner duration-300 hover:shadow-gray-700 border-none rounded-lg bg-purple-500/80 cursor-pointer font-bold flex justify-center items-center text-4xl text-black;
+    }
+
+    .resetButton{
+        @apply  mt-4  cursor-pointer duration-500  text-white text-4xl hover:text-red-500;
+    }
+}
+  
