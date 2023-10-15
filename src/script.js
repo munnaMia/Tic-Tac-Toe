@@ -1,6 +1,7 @@
 let gameStart = true;
 let playerMove = "X";
-
+const soundClick = new Audio('../src/Sounds/click-button-140881.mp3')
+const successSound = new Audio('../src/Sounds/game-bonus-144751.mp3')
 //wining moves
 const winingMoves = [
   [0, 1, 2],
@@ -25,6 +26,12 @@ gameTitle.innerText = "TIC TAC TOE";
 gameTitle.classList.add("gameTitle");
 root.appendChild(gameTitle);
 
+// winner anoucment 
+const winnerAnnoucment = document.createElement('p')
+winnerAnnoucment.classList.add('winnerName')
+winnerAnnoucment.innerText = 'Welcome'
+root.appendChild(winnerAnnoucment)
+
 //game container
 const gameContainer = document.createElement("div");
 gameContainer.classList.add("gameContainerStyle");
@@ -36,8 +43,7 @@ gameReset.innerHTML = '<i class="fa-solid fa-repeat"></i>'
 gameReset.classList.add('resetButton')
 root.appendChild(gameReset)
 
-gameReset.addEventListener("click", ()=>{
-})
+
 
 //check box
 for (let row = 0; row < 3; row++) {
@@ -51,12 +57,22 @@ for (let row = 0; row < 3; row++) {
   }
 }
 
+gameReset.addEventListener("click", ()=>{
+  const cells = document.querySelectorAll(".cellStyle");
+  cells.forEach(item =>{
+    item.innerText = ''
+  })
+  gameStart = true  
+  winnerAnnoucment.innerText = 'Welcome'
+})
 
 function clickEventHandler(e){
+  soundClick.volume = 0.5
   let cell = e.target;
   if (!gameStart || cell.innerText !== "") return;//direct return
   cell.innerText = playerMove;
   playerMove = playerMove === "X" ? "O" : "X";
+  soundClick.play();
 
   //wining or lose chech
   const cells = document.querySelectorAll(".cellStyle");
@@ -67,7 +83,8 @@ function clickEventHandler(e){
       cells[a].innerText === cells[b].innerText &&
       cells[b].innerText === cells[c].innerText
     ) {
-      console.log(`${cells[a].innerText} win`);//winner name
+      winnerAnnoucment.innerText = `Player ${cells[a].innerText} Win This Match `
+      successSound.play()
       gameStart = false;
     }
   })

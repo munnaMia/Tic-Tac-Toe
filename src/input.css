@@ -12,15 +12,19 @@
     }
 
     .gameTitle{
-        @apply lg:text-7xl md:text-6xl sm:text-6xl text-5xl text-white mb-11 font-bold;
+        @apply lg:text-7xl md:text-6xl sm:text-6xl text-5xl text-white mb-4 font-bold;
     }
 
     .cellStyle{
-        @apply hover:shadow-inner duration-300 hover:shadow-gray-700 border-none rounded-lg bg-purple-500/80 cursor-pointer font-bold flex justify-center items-center text-4xl text-black;
+        @apply hover:shadow-inner duration-300 hover:shadow-gray-700 border-none rounded-lg bg-purple-500/80 hover:bg-purple-500/90 cursor-pointer font-bold flex justify-center items-center text-4xl text-black;
     }
 
     .resetButton{
         @apply  mt-4  cursor-pointer duration-500  text-white text-4xl hover:text-red-500;
+    }
+
+    .winnerName{
+        @apply text-white mb-3 text-2xl font-semibold;
     }
 }
   
